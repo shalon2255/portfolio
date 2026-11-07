@@ -8,13 +8,13 @@ window.CONFIG = {
   // order = menu order
   sections: [
     {
-      id: "profile", label: "PROFILE", title: "PLAYER PROFILE", img: "assets/profile.png", accent: "#ffc82e",
+      id: "profile", label: "PROFILE", title: "PLAYER PROFILE", img: "assets/profile.webp", accent: "#ffc82e",
       dialog: "Hi, I'm Shalon — a Unity Game Developer who ships complete games. I design, program and publish 3D games in C#: The Final Gambit, a 3D chess combat game with an AI opponent and Photon online multiplayer, and Until We Wake, a medieval war game you can play right now on itch.io. I own the whole pipeline — gameplay systems, combat, cinematic animation, UI and Blender assets — and I build data-driven systems that a team can extend.",
       chips: [["ROLE", "Unity Game Dev"], ["ENGINE", "Unity 6 · URP"], ["BUILT", "2 full games"], ["FOCUS", "Combat · Systems"]],
       play: ["▶ PLAY MY GAME", "https://shalonrodrigs.itch.io/until-we-wake"],
     },
     {
-      id: "career", label: "CAREER", title: "CAREER PATH", img: "assets/career.png", accent: "#ff9a3c",
+      id: "career", label: "CAREER", title: "CAREER PATH", img: "assets/career.webp", accent: "#ff9a3c",
       // x / y = hotspot position over the stairs image (% of image). Climb the stairs from the bottom.
       steps: [
         { icon: "💻", name: "FULL STACK", when: "JUN 2025 – FEB 2026", title: "Python Full Stack Intern", org: "Luminar Technolab, Kochi", x: 44, y: 78,
@@ -27,14 +27,14 @@ window.CONFIG = {
       start: 1,
     },
     {
-      id: "education", label: "EDUCATION", title: "EDUCATION", img: "assets/education.png", accent: "#ffd23f",
+      id: "education", label: "EDUCATION", title: "EDUCATION", img: "assets/education.webp", accent: "#ffd23f",
       items: [
         ["2025", "Bachelor of Computer Applications (BCA)", "Mahatma Gandhi University, Kerala, India"],
         ["ONGOING", "Game development, learned by shipping", "Unity 6, C#, Blender, Mixamo and Photon — through building and publishing two games."],
       ],
     },
     {
-      id: "projects", label: "PROJECTS", title: "LEVEL SELECT", img: "assets/projects.png", accent: "#7c5cff",
+      id: "projects", label: "PROJECTS", title: "LEVEL SELECT", img: "assets/projects.webp", accent: "#7c5cff",
       projects: [
         { lvl: "LEVEL 1", name: "The Final Gambit — 3D Chess Combat Game", tag: "UNITY 6 · C# · URP", status: "ONLINE MULTIPLAYER · AI · COMBAT",
           cover: "assets/gambit-cover.webp", spark: [78, 37], sparkAlt: "gold",
@@ -46,7 +46,7 @@ window.CONFIG = {
       ],
     },
     {
-      id: "skills", label: "SKILLS", title: "INVENTORY — SKILLS", img: "assets/skills.png", accent: "#38e1ff",
+      id: "skills", label: "SKILLS", title: "INVENTORY — SKILLS", img: "assets/skills.webp", accent: "#38e1ff",
       // [icon, name, description]
       groups: [
         ["GAMEPLAY SYSTEMS", [["🏃", "Third-person controller", "Player movement and third-person controllers."], ["⚔️", "Combat systems", "Melee and weapon combat, hit interactions and combat flow."], ["🎯", "Missions & interactions", "Mission flow, interactive objects and triggers."], ["❤️", "Health & respawn", "Health, damage, respawn logic and result screens."], ["🪙", "Economy & store", "Coin economy and an upgrade store with 5 tiers per weapon type."], ["♟️", "Chess rules & AI", "Full chess rules with an AI opponent."]]],
@@ -58,7 +58,7 @@ window.CONFIG = {
       ],
     },
     {
-      id: "about", label: "ABOUT", title: "CHARACTER SHEET", img: "assets/about.png", accent: "#ff5fa2",
+      id: "about", label: "ABOUT", title: "CHARACTER SHEET", img: "assets/about.webp", accent: "#ff5fa2",
       sheet: [["NAME", "Shalon Rodrigs"], ["CLASS", "Unity Game Developer"], ["BASE", "Kodungallur, Kerala"], ["MAIN WEAPON", "Unity 6 + C#"], ["SPECIALTY", "Combat · Cinematics"], ["SIDE QUEST", "Python Full Stack"]],
       heading2: "WHY HIRE ME",
       passives: [
@@ -71,7 +71,7 @@ window.CONFIG = {
       quest: "ACTIVE QUEST: Join a studio as a Unity / Gameplay Programmer. Ready to start — open CONTACT and let's talk.",
     },
     {
-      id: "contact", label: "CONTACT", title: "HIRE ME", img: "assets/contact.png", accent: "#ff4d4d",
+      id: "contact", label: "CONTACT", title: "HIRE ME", img: "assets/contact.webp", accent: "#ff4d4d",
       sub: "Got a quest for me? Pick up the phone — or send a message.",
       // [label, text shown, link, copy-button?]
       links: [

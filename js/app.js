@@ -222,6 +222,7 @@
     const s = SEC[i]; cur = i; typeTok++;
     document.documentElement.style.setProperty("--accent", s.accent);
     sec.style.background = (imgInfo[s.img] || {}).col || "#34084a";
+    if (!imgInfo[s.img]) load(s.img).then(() => { if (cur === i) sec.style.background = imgInfo[s.img].col; });
     split.classList.toggle("flip", i % 2 === 1);
     $("#crumb").textContent = "▶ " + s.label;
     $("#sectabs").innerHTML = SEC.map((x, k) => `<button class="stab ${k === i ? "on" : ""}" data-k="${k}" aria-label="${x.label}" title="${x.label}"></button>`).join("");
@@ -256,6 +257,14 @@
   $("#back").addEventListener("click", toMenu);
   $("#prev").addEventListener("click", () => { sfx.move(); open(cur - 1); });
   $("#next").addEventListener("click", () => { sfx.move(); open(cur + 1); });
+  // swipe left / right between sections on touch screens (ignores mostly-vertical scrolling)
+  let tx = 0, ty = 0;
+  addEventListener("touchstart", (e) => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+  addEventListener("touchend", (e) => {
+    if (view !== "sec" || busy) return;
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.6) { sfx.move(); open(dx < 0 ? cur + 1 : cur - 1); }
+  }, { passive: true });
 
   addEventListener("keydown", (e) => {
     if (busy) return; const k = e.key;
@@ -303,17 +312,19 @@
 
   /* ================= BOOT ================= */
   (async function boot() {
-    const srcs = [...new Set(["assets/menu.png", ...SEC.flatMap((s) => [s.img])])];
-    let done = 0; const bar = $("#bootbar");
-    const imgs = await Promise.all(srcs.map((s) => load(s).then((im) => { done++; bar.style.width = (done / srcs.length) * 100 + "%"; return im; })));
-    if (imgs[0]) {
-      patchMenu(imgs[0]);
-      try { const c = document.createElement("canvas"); c.width = 64; c.height = 36; c.getContext("2d").drawImage(imgs[0], 0, 0, 64, 36); $("#bgblur").style.backgroundImage = `url(${c.toDataURL()})`; } catch {}
-    }
-    await new Promise((r) => setTimeout(r, reduce ? 0 : 350));
-    const b = $("#boot"); b.style.transition = "opacity .4s"; b.style.opacity = 0; setTimeout(() => (b.style.display = "none"), 450);
+    // only the menu artwork blocks the first screen; everything else loads quietly in the background
     const h = SEC.findIndex((s) => "#" + s.id === location.hash);
+    const bar = $("#bootbar"); bar.style.width = "60%";
+    const need = [load("assets/menu.webp")]; if (h >= 0) need.push(load(SEC[h].img));
+    const [menuImg] = await Promise.all(need);
+    bar.style.width = "100%";
+    if (menuImg) {
+      patchMenu(menuImg);
+      try { const c = document.createElement("canvas"); c.width = 64; c.height = 36; c.getContext("2d").drawImage(menuImg, 0, 0, 64, 36); $("#bgblur").style.backgroundImage = `url(${c.toDataURL()})`; } catch {}
+    }
+    performance.mark("menu-ready"); const b = $("#boot"); b.style.transition = "opacity .25s"; b.style.opacity = 0; setTimeout(() => (b.style.display = "none"), 280);
     if (h >= 0) { menu.classList.remove("on"); sec.classList.add("on"); view = "sec"; renderSection(h); sectionIntro(1); }
     else menuIntro();
+    setTimeout(() => SEC.forEach((s) => { if (!imgInfo[s.img]) load(s.img); }), 800);
   })();
 })();

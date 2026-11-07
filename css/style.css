@@ -168,3 +168,48 @@ a.cover:hover .playtag, a.cover:focus-visible .playtag { transform: none; }
 .slot.on i { animation: bob2 .6s ease-in-out infinite alternate; } @keyframes bob2 { to { transform: translateY(-4px); } }
 .org { font-family: var(--px); font-size: 10px; color: var(--accent); margin: -4px 0 14px; line-height: 1.6; }
 .row-edu h3 { font-size: 30px; } .row-edu small { font-size: 11px; }
+
+/* =====================================================================
+   MOBILE / PORTRAIT REFINEMENTS — applies only when height > width.
+   Desktop (landscape) layout is untouched.
+   ===================================================================== */
+@media (max-aspect-ratio: 1/1) {
+  html, body { -webkit-text-size-adjust: 100%; }
+  button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  #bgblur { background: linear-gradient(#34104f, #12062b) !important; }
+
+  /* ---- main menu ---- */
+  .mstage { overflow: hidden; }
+  .m-title { order: -1; position: relative; left: auto; top: auto; flex: none; padding: 5vh 6vw 0; padding: 5dvh 6vw 0; font-size: clamp(26px, 8.2vw, 44px); line-height: 1.12; z-index: 2; }
+  #menuimg { order: 0; flex: none; height: 44vh; height: 44dvh; width: calc(44vh * .96); width: calc(44dvh * .96); max-width: 100%; align-self: flex-end; object-fit: cover; object-position: 100% 50%; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 14%); mask-image: linear-gradient(90deg, transparent 0, #000 14%); margin-top: -2vh; }
+  #menubtns { order: 1; grid-template-columns: 1fr 1fr; gap: 1.3vh 3.2vw; gap: 1.3dvh 3.2vw; padding: 1.2vh 6vw 3vh; padding: 1.2dvh 6vw 3dvh; align-content: start; }
+  .mbtn { padding: 1.7vh 0; padding: 1.7dvh 0; min-height: 40px; font-size: clamp(10px, 3.2vw, 14px); letter-spacing: 0; }
+  .mbtn:last-child { grid-column: 1 / -1; }
+
+  /* ---- section screens ---- */
+  .topbar { padding: 10px 12px; gap: 10px; }
+  .split, .split.flip { padding: 58px 12px 84px; gap: 4px; -webkit-overflow-scrolling: touch; }
+  .hero3d { height: 30vh; height: 30dvh; min-height: 170px; grid-template-rows: minmax(0, 1fr); }
+  .hero3d .char { height: 100%; width: auto; max-width: 100%; }
+  .spot { width: 34px; height: 34px; margin: -17px 0 0 -17px; font-size: 16px; }
+  .panel { margin: 6px 4px 12px; padding: 18px 14px; }
+  .panel h2 { font-size: 15px; margin-bottom: 14px; }
+  .panel p, .panel li { font-size: 21px; line-height: 1.12; }
+  .chip span { font-size: 11px; }
+  .row-btns { gap: 12px; } .row-btns .pxbtn { flex: 1 1 100%; text-align: center; padding: 14px 10px; }
+  .lvlbtn { padding: 12px; } .tagline { font-size: 9px; }
+  .steps { gap: 8px; } .steps .pxbtn { flex: 1 1 auto; text-align: center; }
+  .slot { font-size: 9px; padding: 10px; min-height: 40px; } .desc { font-size: 21px; }
+  .crow { gap: 8px 10px; padding: 12px 0; } .crow b { width: 100%; } .clink, .crow > span { font-size: 21px; min-width: 0; } .clink::after { right: 92px; }
+  .row-edu h3 { font-size: 24px; }
+  .cover { margin-bottom: 12px; }
+  .playtag { transform: none; font-size: 9px; padding: 8px; }   /* no hover on touch: keep the play label visible */
+  .navarrow { display: block; top: auto; bottom: 14px; margin: 0; width: 46px; height: 46px; font-size: 16px; background: rgba(10,4,24,.88); }
+  .navarrow.l { left: 12px; } .navarrow.r { right: 12px; }
+  #hud { top: 10px; right: 10px; } #snd.pxbtn { padding: 8px 10px; font-size: 9px; }
+  #toast { bottom: 12vh; width: 86vw; font-size: 10px; }
+}
+/* very small phones */
+@media (max-aspect-ratio: 1/1) and (max-width: 360px) {
+  .panel p, .panel li { font-size: 19px; } .clink, .crow > span { font-size: 19px; } .panel h2 { font-size: 13px; }
+}
