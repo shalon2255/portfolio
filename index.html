@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shalon Rodrigs — Game Developer</title>
+  <meta name="description" content="Portfolio of Shalon Rodrigs, Unity Game Developer. Builder of The Final Gambit and Until We Wake. A pixel-art game menu you can play.">
+  <meta name="theme-color" content="#2a0a3d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="boot"><div><div class="bt">SHALON RODRIGS</div><div class="bar"><i id="bootbar"></i></div><div class="bs">LOADING...</div></div></div>
+
+  <div id="app">
+    <div id="bgblur"></div>
+
+    <!-- ============ MAIN MENU ============ -->
+    <section id="menu" class="view on" aria-label="Main menu">
+      <div class="mstage" id="mstage">
+        <img id="menuimg" src="assets/menu.png" alt="" draggable="false">
+        <div class="glow lamp"></div><div class="glow sun"></div>
+        <h1 class="m-title">SHALON<br>RODRIGS</h1>
+        <nav id="menubtns" aria-label="Sections"></nav>
+        <i id="cursor" aria-hidden="true"></i>
+      </div>
+    </section>
+
+    <!-- ============ SECTION VIEW ============ -->
+    <section id="sec" class="view" aria-live="polite">
+      <header class="topbar">
+        <button class="pxbtn small" id="back"><span>◀ MENU</span></button>
+        <div class="crumb" id="crumb"></div>
+        <div class="sectabs" id="sectabs"></div>
+      </header>
+      <div class="split" id="split">
+        <figure class="hero3d" id="hero"><div class="aura"></div><img class="char" id="heroimg" alt="" draggable="false"><div class="spots" id="spots"></div></figure>
+        <div class="panel" id="panel"></div>
+      </div>
+      <button class="navarrow l" id="prev" aria-label="Previous section">◀</button>
+      <button class="navarrow r" id="next" aria-label="Next section">▶</button>
+    </section>
+
+    <canvas id="fx"></canvas>
+    <div class="scan"></div>
+    <div id="wipe"></div>
+
+    <div id="hud">
+      <div class="exp"><span>EXP</span><div class="expbar"><i id="expfill"></i></div><b id="exptxt">0/6</b></div>
+      <button class="pxbtn small" id="snd" aria-pressed="true"><span>SOUND ON</span></button>
+    </div>
+    <div id="toast"></div>
+    <div class="hint" id="hint">↑ ↓ SELECT &nbsp; ENTER OK &nbsp; ESC BACK &nbsp; ← → SWITCH</div>
+  </div>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
